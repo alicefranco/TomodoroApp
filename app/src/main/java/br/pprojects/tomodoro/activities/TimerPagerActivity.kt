@@ -24,8 +24,6 @@ class TimerPagerActivity : AppCompatActivity() {
 
     fun initPages(){
         pages = arrayListOf(Page("Strawberry", resources.getDrawable(R.drawable.strawberry)),
-                            Page("Lemon", resources.getDrawable(R.drawable.lemon)),
-                            Page("Orange", resources.getDrawable(R.drawable.orange)),
-                            Page("Watermelon", resources.getDrawable(R.drawable.watermelon)))
+                            Page("Lemon", resources.getDrawable(R.drawable.lemon)))
     }
 }
