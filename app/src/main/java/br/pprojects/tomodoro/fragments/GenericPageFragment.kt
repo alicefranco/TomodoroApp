@@ -7,17 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.pprojects.tomodoro.R
+import br.pprojects.tomodoro.models.Page
 import kotlinx.android.synthetic.main.fragment_screen_page.*
 
-class ScreenPageFragment: Fragment() {
+class GenericPageFragment: Fragment() {
     private var title: String? = null
-    private lateinit var image: Drawable
+    //private lateinit var image: Int
     companion object {
-        fun newInstance(title: String, image: Drawable): ScreenPageFragment {
-            return ScreenPageFragment().apply {
-                this.title = title
-                this.image = image
-                //iv_avatar.setImageDrawable(screenImage)
+        fun newInstance(page: Page): GenericPageFragment {
+            return GenericPageFragment().apply {
+                this.title = page.title
+                //this.image = page.image
             }
         }
     }
@@ -29,6 +29,6 @@ class ScreenPageFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tv_title.text = title
-        iv_avatar.setImageDrawable(image)
+        //iv_avatar.setImageDrawable(image)
     }
 }
