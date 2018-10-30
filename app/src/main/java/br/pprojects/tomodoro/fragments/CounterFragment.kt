@@ -11,7 +11,10 @@ import br.pprojects.tomodoro.R
 import kotlinx.android.synthetic.main.fragment_counter.*
 
 class CounterFragment: Fragment() {
+    private val s = 1000L
+    private val milliS = 1L
     private var time: Long = 0
+    private val startTime = 30*s
     private lateinit var counter: CountDownTimer
 
     companion object {
@@ -30,14 +33,36 @@ class CounterFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        counter = object: CountDownTimer(time*1000, 1000){
-            override fun onTick(millisUntilFinished: Long) {
-                tv_counter.setText((millisUntilFinished / 1000).toString())
-            }
+        btn_start?.setOnClickListener{
+            counter = object: CountDownTimer(startTime, s){
+                override fun onTick(millisUntilFinished: Long) {
+                    tv_counter?.setText((millisUntilFinished / 1000).toString())
+                }
 
-            override fun onFinish() {
-                tv_counter.setText("done!")
-            }
-        }.start()
+                override fun onFinish() {
+                    tv_counter?.setText("done!")
+                }
+            }.start()
+        }
+
+        btn_stop?.setOnClickListener {
+            counter.cancel()
+//            counter = object: CountDownTimer(startTime, s){
+//                override fun onTick(millisUntilFinished: Long) {
+//                    tv_counter?.setText((millisUntilFinished / 1000).toString())
+//                }
+//
+//                override fun onFinish() {
+//                    tv_counter?.setText("done!")
+//                }
+//            }.start()
+        }
+
     }
+
+
+    private fun startClock(){}
+
+    private fun stopClock(){}
+
 }
