@@ -14,7 +14,7 @@ class CounterFragment: Fragment() {
     private val s = 1000L
     private val milliS = 1L
     private var time: Long = 0
-    private val startTime = 30*s
+    private val startTime = 100*s
     private lateinit var counter: CountDownTimer
 
     companion object {
@@ -36,7 +36,9 @@ class CounterFragment: Fragment() {
         btn_start?.setOnClickListener{
             counter = object: CountDownTimer(startTime, s){
                 override fun onTick(millisUntilFinished: Long) {
-                    tv_counter?.setText((millisUntilFinished / 1000).toString())
+                    var pace = millisUntilFinished / 1000
+                    tv_counter?.setText((pace).toString())
+                    progressBar2.setProgress(pace.toInt())
                 }
 
                 override fun onFinish() {
