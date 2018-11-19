@@ -1,6 +1,5 @@
 package br.pprojects.tomodoro.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v4.app.Fragment
@@ -9,18 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import br.pprojects.tomodoro.R
 import kotlinx.android.synthetic.main.fragment_counter.*
+import java.util.*
 
 class CounterFragment: Fragment() {
     private val s = 1000L
+    private val m = 60L*s
+
     private val milliS = 1L
-    private var time: Long = 0
-    private val startTime = 100*s
+    //private val startTime = 25*s
+    private val startTime = 2*m
+
+    //private var time = Date()
+
     private lateinit var counter: CountDownTimer
 
     companion object {
-        fun newInstance(time: Long): CounterFragment {
+        fun newInstance(min: Long): CounterFragment {
             return CounterFragment().apply {
-                this.time = time
+                //this.time = time
                 //iv_avatar.setImageDrawable(screenImage)
             }
         }
@@ -36,13 +41,18 @@ class CounterFragment: Fragment() {
         btn_start?.setOnClickListener{
             counter = object: CountDownTimer(startTime, s){
                 override fun onTick(millisUntilFinished: Long) {
-                    var pace = millisUntilFinished / 1000
-                    tv_counter?.setText((pace).toString())
-                    progressBar2.setProgress(pace.toInt())
+                    var paceSec = millisUntilFinished / s
+                    var paceMin = millisUntilFinished / m
+                    //todo contar em min
+                    tv_counter_seg?.setText((paceSec).toString())
+                    tv_counter_min?.setText((paceMin).toString())
+                    //tv_counter_min?.setText((paceSec).)
+                    //pb_clock.setProgress(paceSec.toInt())
                 }
 
                 override fun onFinish() {
-                    tv_counter?.setText("done!")
+                    //todo contar em min
+                    //tv_counter?.setText("done!")
                 }
             }.start()
         }

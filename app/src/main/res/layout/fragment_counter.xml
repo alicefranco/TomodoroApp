@@ -7,12 +7,12 @@
 
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/pb_clock"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="232dp"
         android:layout_height="232dp"
-        android:progress="00"
         android:indeterminate="false"
+        android:progress="00"
         android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,16 +20,54 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_counter" />
 
     <TextView
-        android:id="@+id/tv_counter"
-        android:layout_width="113dp"
-        android:layout_height="60dp"
+        android:id="@+id/tv_counter_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="00"
         android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar2"
-        app:layout_constraintTop_toTopOf="@+id/progressBar2" />
+        app:layout_constraintBottom_toBottomOf="@+id/pb_clock"
+        app:layout_constraintEnd_toStartOf="@+id/tv_counter_dots"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_counter" />
+
+    <TextView
+        android:id="@+id/tv_counter_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text=":"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_counter_min"
+        app:layout_constraintEnd_toStartOf="@+id/tv_counter_seg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_counter_min"
+        app:layout_constraintTop_toTopOf="@+id/tv_counter_min" />
+
+    <TextView
+        android:id="@+id/tv_counter_seg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="00"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_counter_dots"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_counter_dots"
+        app:layout_constraintTop_toTopOf="@+id/tv_counter_dots" />
 
     <TextView
         android:id="@+id/tv_title_counter"
@@ -41,7 +79,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="My counter"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+        app:layout_constraintBottom_toTopOf="@+id/pb_clock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,4 +107,16 @@
         android:text="Stop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Dev"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
